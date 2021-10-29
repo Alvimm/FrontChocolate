@@ -25,7 +25,7 @@ function App() {
           {infos.map((info) => (
             <li key={info.id}>
               <div>
-                <img src={chocolateImg} alt="Imagem de chocolte" />
+                <img src={chocolateImg} alt="Imagem de chocolate" />
                 <div>
                   <h2>{info.title}</h2>
                   <p>{info.id}</p>
