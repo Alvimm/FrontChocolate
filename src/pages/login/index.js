@@ -1,10 +1,13 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/jsx-no-bind */
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import GlobalStyle from '../../styles/global';
 import { Container } from '../../components/container';
 import chocolateImg from '../../assets/images/chocolate.svg';
 import { LoginForm } from './style';
 import api from '../../services/api';
+import { localStorageSetItem } from '../../helper/localStorage';
 
 function Login() {
   const [infos, setInfos] = useState({
@@ -15,13 +18,20 @@ function Login() {
   const onFormSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await api.post('/login', infos);
+    try {
+      const response = await api.post('/login', infos);
 
-    if (response.status !== 200) {
-      return alert('Houve um problema com as credenciais');
+      if (response.status !== 201) {
+        return alert('Usuário inválido');
+      }
+
+      localStorageSetItem(response.data.token);
+
+      <Redirect to="/" />;
+      return alert('Usuário válido');
+    } catch (err) {
+      return alert('Houve um problema com a API');
     }
-
-    return alert('usuário autenticado');
   };
 
   const handleInputChange = (e) => {
