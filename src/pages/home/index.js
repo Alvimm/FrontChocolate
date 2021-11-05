@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
-// import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import GlobalStyle from '../../styles/global';
 import { Container } from '../../components/container';
 import { ChocolateList } from './style';
 import chocolateImg from '../../assets/images/chocolate.svg';
 import api from '../../services/api';
-import validateToken from '../../helper/auth';
+import { localStorageGetItem } from '../../helper/localStorage';
 
 function App() {
-  validateToken();
+  const history = useHistory();
+
+  const token = localStorageGetItem();
+
+  if (!token) {
+    history.push('/login');
+  }
 
   const [infos, setInfos] = useState([]);
 
