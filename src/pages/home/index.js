@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import GlobalStyle from '../../styles/global';
 import { Container } from '../../components/container';
-import { ChocolateList } from './style';
+import { ChocolateList, ButtonLink } from './style';
 import chocolateImg from '../../assets/images/chocolate.svg';
 import api from '../../services/api';
-import { localStorageGetItem } from '../../helper/localStorage';
+import {
+  localStorageGetItem,
+  localStorageRemoveItem,
+} from '../../helper/localStorage';
 
 function App() {
   const history = useHistory();
@@ -18,10 +21,26 @@ function App() {
 
   const [infos, setInfos] = useState([]);
 
-  useEffect(async () => {
-    const response = await api.get('/chocolates');
+  const logout = () => {
+    localStorageRemoveItem();
+    history.push('/login');
+  };
 
-    setInfos(response.data.chocolates);
+  const getApiData = async () => {
+    try {
+      const response = await api.get('/chocolates');
+      setInfos(response.data.chocolates);
+    } catch (err) {
+      setInfos(infos);
+    }
+  };
+
+  const buttonClick = () => {
+    getApiData();
+  };
+
+  useEffect(() => {
+    getApiData();
   }, []);
 
   return (
@@ -30,6 +49,9 @@ function App() {
       <Container>
         <img src={chocolateImg} alt="Imagem de chocolate" />
         <h1>Chocolates</h1>
+        <ButtonLink type="button" onClick={logout}>
+          Sair
+        </ButtonLink>
 
         <ChocolateList>
           {infos.map((info) => (
@@ -45,6 +67,9 @@ function App() {
             </li>
           ))}
         </ChocolateList>
+        <ButtonLink type="button" onClick={buttonClick}>
+          Recarregar chocolates
+        </ButtonLink>
       </Container>
     </div>
   );
