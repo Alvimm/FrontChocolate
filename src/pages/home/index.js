@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import GlobalStyle from '../../styles/global';
 import { Container } from '../../components/container';
 import { ChocolateList, ButtonLink } from './style';
@@ -15,15 +15,19 @@ function App() {
 
   const token = localStorageGetItem();
 
+  const changeRoute = (route) => {
+    history.push(route);
+  };
+
   if (!token) {
-    history.push('/login');
+    changeRoute('/login');
   }
 
   const [infos, setInfos] = useState([]);
 
   const logout = () => {
     localStorageRemoveItem();
-    history.push('/login');
+    changeRoute('/login');
   };
 
   const getApiData = async () => {
@@ -51,6 +55,13 @@ function App() {
         <h1>Chocolates</h1>
         <ButtonLink type="button" onClick={logout}>
           Sair
+        </ButtonLink>
+
+        <ButtonLink>
+          <Link to="/chocolate">Cadastrar chocolate</Link>
+        </ButtonLink>
+        <ButtonLink>
+          <Link to="/user">Cadastrar usuário</Link>
         </ButtonLink>
 
         <ChocolateList>

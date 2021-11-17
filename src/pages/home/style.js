@@ -49,4 +49,9 @@ export const ButtonLink = styled.button`
     cursor: pointer;
     background-color: #ff9839;
   }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
 `;
