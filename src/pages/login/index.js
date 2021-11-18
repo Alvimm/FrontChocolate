@@ -1,11 +1,11 @@
-/* eslint-disable no-alert */
-/* eslint-disable react/jsx-no-bind */
 import React, { useState } from 'react';
+import ReactNotification, { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 import { useHistory } from 'react-router-dom';
 import GlobalStyle from '../../styles/global';
 import { Container } from '../../components/container';
 import chocolateImg from '../../assets/images/chocolate.svg';
-import { LoginForm } from './style';
+import { Form } from '../../components/form';
 import api from '../../services/api';
 import {
   localStorageSetItem,
@@ -29,15 +29,39 @@ function Login() {
   const onFormSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await api.post('/login', infos);
+    try {
+      const response = await api.post('/login', infos);
 
-    if (response.status !== 201) {
-      return alert('Usuário inválido');
+      if (response.status !== 201) {
+        store.addNotification({
+          title: 'Houve um erro ao fazer login',
+          message: 'Houve um erro ao fazer o login',
+          type: 'warning',
+          insert: 'top',
+          container: 'top-right',
+          dismiss: {
+            duration: 5000,
+            onScreen: true,
+          },
+        });
+      }
+
+      localStorageSetItem(response.data.token);
+
+      return history.push('/');
+    } catch (err) {
+      return store.addNotification({
+        title: 'Erro na autenticação',
+        message: 'E-mail ou senha inválidos',
+        type: 'warning',
+        insert: 'top',
+        container: 'top-right',
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
     }
-
-    localStorageSetItem(response.data.token);
-
-    return history.push('/');
   };
 
   const handleInputChange = (e) => {
@@ -50,11 +74,12 @@ function Login() {
   return (
     <div className="App">
       <GlobalStyle />
+      <ReactNotification />
       <Container>
         <img src={chocolateImg} alt="imagem do chocolate" />
         <h1>Login</h1>
 
-        <LoginForm onSubmit={onFormSubmit}>
+        <Form onSubmit={onFormSubmit}>
           <input
             type="email"
             name="email"
@@ -70,7 +95,7 @@ function Login() {
             onChange={handleInputChange}
           />
           <button type="submit">Login</button>
-        </LoginForm>
+        </Form>
       </Container>
     </div>
   );

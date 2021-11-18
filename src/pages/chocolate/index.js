@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import ReactNotification, { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 import { useHistory, Link } from 'react-router-dom';
 import GlobalStyle from '../../styles/global';
 import { Container } from '../../components/container';
 import { localStorageGetItem } from '../../helper/localStorage';
-import { ChocolateForm, ButtonLink } from './style';
+import { ButtonLink } from '../../components/button';
+import { Form } from '../../components/form';
 import chocolateImg from '../../assets/images/chocolate.svg';
 import api from '../../services/api';
 
@@ -47,26 +50,45 @@ function Chocolate() {
       });
 
       if (response.status !== 201) {
-        // eslint-disable-next-line no-alert
-        alert('Deu ruim na req');
+        store.addNotification({
+          title: 'Houve um erro na API',
+          message: 'Houve um erro ao fazer o cadastro de chocolates',
+          type: 'warning',
+          insert: 'top',
+          container: 'top-right',
+          dismiss: {
+            duration: 5000,
+            onScreen: true,
+          },
+        });
       }
       history.push('/');
     } catch (err) {
-      // eslint-disable-next-line no-console
-      console.log(err);
+      store.addNotification({
+        title: 'Houve um erro ao cadastrar chocolate',
+        message: 'Não foi possível cadastrar o chocolate',
+        type: 'danger',
+        insert: 'top',
+        container: 'top-right',
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
     }
   };
 
   return (
     <div className="App">
       <GlobalStyle />
+      <ReactNotification />
       <Container>
         <img src={chocolateImg} alt="imagem do chocolate" />
         <h1>Cadastrar chocolate</h1>
         <ButtonLink>
           <Link to="/">Página principal</Link>
         </ButtonLink>
-        <ChocolateForm onSubmit={onFormSubmit}>
+        <Form onSubmit={onFormSubmit}>
           <input
             type="text"
             name="name"
@@ -83,7 +105,7 @@ function Chocolate() {
           />
           <input type="file" name="file" onChange={handleImageChange} />
           <button type="submit">Cadastrar chocolate</button>
-        </ChocolateForm>
+        </Form>
       </Container>
     </div>
   );

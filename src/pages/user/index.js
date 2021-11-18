@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import ReactNotification, { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 import { useHistory } from 'react-router-dom';
 import GlobalStyle from '../../styles/global';
 import { Container } from '../../components/container';
@@ -28,8 +30,17 @@ function User() {
     const { password, confirmPassword } = infos;
 
     if (password !== confirmPassword) {
-      // eslint-disable-next-line no-alert
-      return alert('As senhas não são iguais');
+      return store.addNotification({
+        title: 'Erro ao cadastrar o usuário',
+        message: 'Não foi possível cadastrar o usuário',
+        type: 'warning',
+        insert: 'top',
+        container: 'top-right',
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
     }
 
     delete infos.confirmPassword;
@@ -37,14 +48,32 @@ function User() {
       const response = await api.post('/users', infos);
 
       if (response.status !== 201) {
-        // eslint-disable-next-line no-alert
-        return alert('Deu ruim ao criar usuário');
+        return store.addNotification({
+          title: 'Erro ao cadastrar o usuário',
+          message: 'Não foi possível cadastrar o usuário',
+          type: 'warning',
+          insert: 'top',
+          container: 'top-right',
+          dismiss: {
+            duration: 5000,
+            onScreen: true,
+          },
+        });
       }
 
       return history.push('/');
     } catch (error) {
-      // eslint-disable-next-line no-console
-      return console.log(error);
+      return store.addNotification({
+        title: 'Houve um erro ao cadastrar chocolate',
+        message: 'Não foi possível cadastrar o chocolate',
+        type: 'danger',
+        insert: 'top',
+        container: 'top-right',
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
     }
   };
 
@@ -58,6 +87,7 @@ function User() {
   return (
     <div className="App">
       <GlobalStyle />
+      <ReactNotification />
       <Container>
         <img src={chocolateImg} alt="Imagem de chocolate" />
         <h1>Cadastrar usuário</h1>

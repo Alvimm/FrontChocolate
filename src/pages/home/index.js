@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import ReactNotification, { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 import { useHistory, Link } from 'react-router-dom';
 import GlobalStyle from '../../styles/global';
 import { Container } from '../../components/container';
-import { ChocolateList, ButtonLink } from './style';
+import { ChocolateList } from './style';
+import { ButtonLink } from '../../components/button';
 import chocolateImg from '../../assets/images/chocolate.svg';
 import api from '../../services/api';
 import {
@@ -35,6 +38,17 @@ function App() {
       const response = await api.get('/chocolates');
       setInfos(response.data.chocolates);
     } catch (err) {
+      store.addNotification({
+        title: 'Erro de carregamento dos dados',
+        message: 'Houve um erro ao carregar os chocolates',
+        type: 'danger',
+        insert: 'top',
+        container: 'top-right',
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
       setInfos(infos);
     }
   };
@@ -50,6 +64,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
+      <ReactNotification />
       <Container>
         <img src={chocolateImg} alt="Imagem de chocolate" />
         <h1>Chocolates</h1>

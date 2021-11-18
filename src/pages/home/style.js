@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// eslint-disable-next-line import/prefer-default-export
 export const ChocolateList = styled.ul`
   border-top: 1px solid #eee;
   list-style: none;
@@ -35,23 +34,5 @@ export const ChocolateList = styled.ul`
         margin-left: 10px;
       }
     }
-  }
-`;
-
-export const ButtonLink = styled.button`
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  background-color: #fdf1d9;
-  margin: 10px;
-
-  &:hover {
-    cursor: pointer;
-    background-color: #ff9839;
-  }
-
-  a {
-    color: #000;
-    text-decoration: none;
   }
 `;
