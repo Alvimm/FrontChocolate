@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import ReactNotification, { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import GlobalStyle from '../../styles/global';
 import { Container } from '../../components/container';
+import { ButtonLink } from '../../components/button';
 import { Form } from '../../components/form';
 import { localStorageGetItem } from '../../helper/localStorage';
 import chocolateImg from '../../assets/images/chocolate.svg';
@@ -91,6 +92,9 @@ function User() {
       <Container>
         <img src={chocolateImg} alt="Imagem de chocolate" />
         <h1>Cadastrar usuário</h1>
+        <ButtonLink>
+          <Link to="/">Ir para a página principal</Link>{' '}
+        </ButtonLink>
 
         <Form onSubmit={onFormSubmit}>
           <input

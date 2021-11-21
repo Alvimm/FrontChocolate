@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GlobalStyle from '../../styles/global';
-import { PageTitle } from './style';
 import { Container } from '../../components/container';
+import { ButtonLink } from '../../components/button';
+import chocolateImg from '../../assets/images/chocolate.svg';
 
 function NotFound() {
   return (
@@ -10,9 +11,12 @@ function NotFound() {
       <GlobalStyle />
 
       <Container>
-        <PageTitle> 404 not found!</PageTitle>
+        <img src={chocolateImg} alt="Imagem do chocolate" />
+        <h1> 404 - Not found!</h1>
 
-        <Link to="/login"> Vá para o login</Link>
+        <ButtonLink>
+          <Link to="/">Ir para página inicial</Link>
+        </ButtonLink>
       </Container>
     </div>
   );

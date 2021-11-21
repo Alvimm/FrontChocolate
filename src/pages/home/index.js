@@ -52,6 +52,38 @@ function App() {
       setInfos(infos);
     }
   };
+  const deleteChocolate = async (e) => {
+    try {
+      const { id } = e.target;
+      const response = await api.delete(`/chocolates/${id}`);
+      if (response.status !== 200) {
+        store.addNotification({
+          title: 'Erro ao deletar',
+          message: 'Houve um erro ao deletar o chocolate',
+          type: 'warning',
+          insert: 'top',
+          container: 'top-right',
+          dismiss: {
+            duration: 5000,
+            onScreen: true,
+          },
+        });
+      }
+      getApiData();
+    } catch (err) {
+      store.addNotification({
+        title: 'Erro ao deletar',
+        message: 'Houve um erro ao deletar o chocolate',
+        type: 'danger',
+        insert: 'top',
+        container: 'top-right',
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
+    }
+  };
 
   const buttonClick = () => {
     getApiData();
@@ -86,8 +118,19 @@ function App() {
                 <img src={info.image} alt="Imagem de chocolate" />
                 <div>
                   <h2>{info.name}</h2>
-                  <p>{info.value}</p>
-                  <p>{info.name}</p>
+                  <p>
+                    <strong>R$:</strong> {info.value}
+                  </p>
+                  <p>
+                    <strong>Marca:</strong> {info.name}
+                  </p>
+                  <ButtonLink // eslint-disable-next-line no-underscore-dangle
+                    id={info._id}
+                    type="button"
+                    onClick={deleteChocolate}
+                  >
+                    Deletar
+                  </ButtonLink>
                 </div>
               </div>
             </li>
