@@ -105,7 +105,7 @@ function App() {
         </ButtonLink>
 
         <ButtonLink>
-          <Link to="/chocolate">Cadastrar chocolate</Link>
+          <Link to="/chocolates">Cadastrar chocolate</Link>
         </ButtonLink>
         <ButtonLink>
           <Link to="/user">Cadastrar usuário</Link>
