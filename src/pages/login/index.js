@@ -95,6 +95,30 @@ function Login() {
             onChange={handleInputChange}
           />
           <button type="submit">Login</button>
+
+          <footer className="footer">
+            <div className="container">
+              <div className="row">
+                <div className="footer-col">
+                  <h4>Company</h4>
+                  <ul>
+                    <li>
+                      <a href="https://github.com/Alvimm">about us</a>
+                    </li>
+                    <li>
+                      <a href="https://github.com/Alvimm">our portfolio</a>
+                    </li>
+                    <li>
+                      <a href="https://github.com/Alvimm">privacy policy</a>
+                    </li>
+                    <li>
+                      <a href="https://github.com/Alvimm">work with us</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </footer>
         </Form>
       </Container>
     </div>
