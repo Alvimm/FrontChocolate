@@ -109,7 +109,9 @@ function Login() {
                       <a href="https://github.com/Alvimm">our portfolio</a>
                     </li>
                     <li>
-                      <a href="https://github.com/Alvimm">privacy policy</a>
+                      <a href="https://github.com/Alvimm?tab=repositories">
+                        privacy policy
+                      </a>
                     </li>
                     <li>
                       <a href="https://github.com/Alvimm">work with us</a>
