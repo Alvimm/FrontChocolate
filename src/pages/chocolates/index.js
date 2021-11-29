@@ -9,6 +9,7 @@ import { ButtonLink } from '../../components/button';
 import { Form } from '../../components/form';
 import chocolateImg from '../../assets/images/chocolate.svg';
 import api from '../../services/api';
+import { Footer } from '../../components/footer';
 
 function Chocolate() {
   const history = useHistory();
@@ -107,6 +108,32 @@ function Chocolate() {
           <button type="submit">Cadastrar chocolate</button>
         </Form>
       </Container>
+      <Footer>
+        <footer className="footer">
+          <div className="container">
+            <div className="row">
+              <div className="footer-col">
+                <h4>Know me</h4>
+                <ul>
+                  <li>
+                    <a href="https://github.com/Alvimm">about me</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Alvimm?tab=repositories">
+                      my portfolio
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.linkedin.com/in/filipe-alvim-178518210/">
+                      work with me
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </Footer>
     </div>
   );
 }

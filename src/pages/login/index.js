@@ -11,6 +11,7 @@ import {
   localStorageSetItem,
   localStorageGetItem,
 } from '../../helper/localStorage';
+import { Footer } from '../../components/footer';
 
 function Login() {
   const history = useHistory();
@@ -95,34 +96,34 @@ function Login() {
             onChange={handleInputChange}
           />
           <button type="submit">Login</button>
-
-          <footer className="footer">
-            <div className="container">
-              <div className="row">
-                <div className="footer-col">
-                  <h4>Company</h4>
-                  <ul>
-                    <li>
-                      <a href="https://github.com/Alvimm">about us</a>
-                    </li>
-                    <li>
-                      <a href="https://github.com/Alvimm">our portfolio</a>
-                    </li>
-                    <li>
-                      <a href="https://github.com/Alvimm?tab=repositories">
-                        privacy policy
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://github.com/Alvimm">work with us</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </footer>
         </Form>
       </Container>
+      <Footer>
+        <footer className="footer">
+          <div className="container">
+            <div className="row">
+              <div className="footer-col">
+                <h4>Know me</h4>
+                <ul>
+                  <li>
+                    <a href="https://github.com/Alvimm">about me</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Alvimm?tab=repositories">
+                      my portfolio
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.linkedin.com/in/filipe-alvim-178518210/">
+                      work with me
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </Footer>
     </div>
   );
 }
