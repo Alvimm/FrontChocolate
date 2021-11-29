@@ -40,8 +40,8 @@ function App() {
       setInfos(response.data.chocolates);
     } catch (err) {
       store.addNotification({
-        title: 'Erro de carregamento dos dados',
-        message: 'Houve um erro ao carregar os chocolates',
+        title: 'Data loading error',
+        message: 'There was an error loading the chocolates',
         type: 'danger',
         insert: 'top',
         container: 'top-right',
@@ -59,8 +59,8 @@ function App() {
       const response = await api.delete(`/chocolates/${id}`);
       if (response.status !== 200) {
         store.addNotification({
-          title: 'Erro ao deletar',
-          message: 'Houve um erro ao deletar o chocolate',
+          title: 'Error deleting',
+          message: 'There was an error deleting the chocolate',
           type: 'warning',
           insert: 'top',
           container: 'top-right',
@@ -73,8 +73,8 @@ function App() {
       getApiData();
     } catch (err) {
       store.addNotification({
-        title: 'Erro ao deletar',
-        message: 'Houve um erro ao deletar o chocolate',
+        title: 'Error deleting',
+        message: 'There was an error deleting the chocolate',
         type: 'danger',
         insert: 'top',
         container: 'top-right',
@@ -99,38 +99,38 @@ function App() {
       <GlobalStyle />
       <ReactNotification />
       <Container>
-        <img src={chocolateImg} alt="Imagem de chocolate" />
+        <img src={chocolateImg} alt="Chocolate" />
         <h1>Chocolates</h1>
         <ButtonLink type="button" onClick={logout}>
-          Sair
+          Logout
         </ButtonLink>
 
         <ButtonLink>
-          <Link to="/chocolates">Cadastrar chocolate</Link>
+          <Link to="/chocolates">Register chocolate</Link>
         </ButtonLink>
         <ButtonLink>
-          <Link to="/user">Cadastrar usuário</Link>
+          <Link to="/user">Register user</Link>
         </ButtonLink>
 
         <ChocolateList>
           {infos.map((info) => (
             <li key={info.name}>
               <div>
-                <img src={info.image} alt="Imagem de chocolate" />
+                <img src={info.image} alt="Chocolate" />
                 <div>
                   <h2>{info.name}</h2>
                   <p>
-                    <strong>R$:</strong> {info.value}
+                    <strong>US$:</strong> {info.value}
                   </p>
                   <p>
-                    <strong>Marca:</strong> {info.name}
+                    <strong>Brand:</strong> {info.name}
                   </p>
                   <ButtonLink // eslint-disable-next-line no-underscore-dangle
                     id={info._id}
                     type="button"
                     onClick={deleteChocolate}
                   >
-                    Deletar
+                    Delete
                   </ButtonLink>
                 </div>
               </div>
@@ -138,7 +138,7 @@ function App() {
           ))}
         </ChocolateList>
         <ButtonLink type="button" onClick={buttonClick}>
-          Recarregar chocolates
+          Reload chocolates
         </ButtonLink>
       </Container>
       <Footer>

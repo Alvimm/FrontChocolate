@@ -52,8 +52,8 @@ function Chocolate() {
 
       if (response.status !== 201) {
         store.addNotification({
-          title: 'Houve um erro na API',
-          message: 'Houve um erro ao fazer o cadastro de chocolates',
+          title: 'There was an error in the API',
+          message: 'There was an error when register chocolates',
           type: 'warning',
           insert: 'top',
           container: 'top-right',
@@ -66,8 +66,8 @@ function Chocolate() {
       history.push('/');
     } catch (err) {
       store.addNotification({
-        title: 'Houve um erro ao cadastrar chocolate',
-        message: 'Não foi possível cadastrar o chocolate',
+        title: 'There was an error when register chocolate',
+        message: 'It was not possible to register the chocolate',
         type: 'danger',
         insert: 'top',
         container: 'top-right',
@@ -84,28 +84,28 @@ function Chocolate() {
       <GlobalStyle />
       <ReactNotification />
       <Container>
-        <img src={chocolateImg} alt="imagem do chocolate" />
-        <h1>Cadastrar chocolate</h1>
+        <img src={chocolateImg} alt="chocolate" />
+        <h1>Register chocolate</h1>
         <ButtonLink>
-          <Link to="/">Página principal</Link>
+          <Link to="/">Home page</Link>
         </ButtonLink>
         <Form onSubmit={onFormSubmit}>
           <input
             type="text"
             name="name"
-            placeholder="Digite o nome do chocolate"
+            placeholder="Enter the name of the chocolate"
             required
             onChange={handleInputChange}
           />
           <input
             type="number"
             name="value"
-            placeholder="Digite o valor do chocolate"
+            placeholder="enter the value of the chocolate"
             required
             onChange={handleInputChange}
           />
           <input type="file" name="file" onChange={handleImageChange} />
-          <button type="submit">Cadastrar chocolate</button>
+          <button type="submit">Register chocolate</button>
         </Form>
       </Container>
       <Footer>

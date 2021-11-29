@@ -35,8 +35,8 @@ function Login() {
 
       if (response.status !== 201) {
         store.addNotification({
-          title: 'Houve um erro ao fazer login',
-          message: 'Houve um erro ao fazer o login',
+          title: 'There was an error logging in.',
+          message: 'There was an error logging in.',
           type: 'warning',
           insert: 'top',
           container: 'top-right',
@@ -52,8 +52,8 @@ function Login() {
       return history.push('/');
     } catch (err) {
       return store.addNotification({
-        title: 'Erro na autenticação',
-        message: 'E-mail ou senha inválidos',
+        title: 'Authentication error',
+        message: 'Invalid email or password',
         type: 'warning',
         insert: 'top',
         container: 'top-right',
@@ -77,21 +77,21 @@ function Login() {
       <GlobalStyle />
       <ReactNotification />
       <Container>
-        <img src={chocolateImg} alt="imagem do chocolate" />
+        <img src={chocolateImg} alt="Chocolate" />
         <h1>Login</h1>
 
         <Form onSubmit={onFormSubmit}>
           <input
             type="email"
             name="email"
-            placeholder="Digite seu e-mail"
+            placeholder="Type your e-mail"
             required
             onChange={handleInputChange}
           />
           <input
             type="password"
             name="password"
-            placeholder="Digite sua senha"
+            placeholder="Type your password"
             required
             onChange={handleInputChange}
           />

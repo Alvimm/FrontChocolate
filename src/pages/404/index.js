@@ -12,11 +12,11 @@ function NotFound() {
       <GlobalStyle />
 
       <Container>
-        <img src={chocolateImg} alt="Imagem do chocolate" />
+        <img src={chocolateImg} alt="Chocolate" />
         <h1> 404 - Not found!</h1>
 
         <ButtonLink>
-          <Link to="/">Ir para página inicial</Link>
+          <Link to="/">Go to home page</Link>
         </ButtonLink>
       </Container>
       <Footer>

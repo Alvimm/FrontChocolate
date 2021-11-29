@@ -33,8 +33,8 @@ function User() {
 
     if (password !== confirmPassword) {
       return store.addNotification({
-        title: 'Erro ao cadastrar o usuário',
-        message: 'Não foi possível cadastrar o usuário',
+        title: 'Error registering user',
+        message: 'Unable to register user',
         type: 'warning',
         insert: 'top',
         container: 'top-right',
@@ -51,8 +51,8 @@ function User() {
 
       if (response.status !== 201) {
         return store.addNotification({
-          title: 'Erro ao cadastrar o usuário',
-          message: 'Não foi possível cadastrar o usuário',
+          title: 'Error registering user',
+          message: 'Unable to register user',
           type: 'warning',
           insert: 'top',
           container: 'top-right',
@@ -66,8 +66,8 @@ function User() {
       return history.push('/');
     } catch (error) {
       return store.addNotification({
-        title: 'Houve um erro ao cadastrar chocolate',
-        message: 'Não foi possível cadastrar o chocolate',
+        title: 'There was an error register chocolate',
+        message: 'Unable to register chocolate',
         type: 'danger',
         insert: 'top',
         container: 'top-right',
@@ -91,42 +91,42 @@ function User() {
       <GlobalStyle />
       <ReactNotification />
       <Container>
-        <img src={chocolateImg} alt="Imagem de chocolate" />
-        <h1>Cadastrar usuário</h1>
+        <img src={chocolateImg} alt="Chocolate" />
+        <h1>Register usuário</h1>
         <ButtonLink>
-          <Link to="/">Ir para a página principal</Link>{' '}
+          <Link to="/">Go to home page</Link>{' '}
         </ButtonLink>
 
         <Form onSubmit={onFormSubmit}>
           <input
             type="text"
             name="name"
-            placeholder="Digite seu nome"
+            placeholder="Type your name"
             required
             onChange={handleInputChange}
           />
           <input
             type="email"
             name="email"
-            placeholder="Digite seu e-mail"
+            placeholder="Type your e-mail"
             required
             onChange={handleInputChange}
           />
           <input
             type="password"
             name="password"
-            placeholder="Digite sua senha"
+            placeholder="Type your password"
             required
             onChange={handleInputChange}
           />
           <input
             type="password"
             name="confirmPassword"
-            placeholder="Digite sua senha novamente"
+            placeholder="Enter your password again"
             required
             onChange={handleInputChange}
           />
-          <button type="submit">Cadastrar usuário</button>
+          <button type="submit">Register usuário</button>
         </Form>
       </Container>
       <Footer>
