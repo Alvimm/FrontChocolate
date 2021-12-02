@@ -26,16 +26,6 @@ export const Footer = styled.footer`
     list-style: none;
   }
 
-  .content {
-    width: 100%;
-    padding: 100px;
-  }
-
-  .content h1,
-  p {
-    padding-bottom: 40px;
-  }
-
   .footer {
     background-color: #000;
     padding: 70px 0;
@@ -53,17 +43,6 @@ export const Footer = styled.footer`
     margin-bottom: 35px;
     font-weight: 500;
     position: relative;
-  }
-
-  .footer-col h4::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    background-color: #161516;
-    height: 2px;
-    box-sizing: border-box;
-    width: 50px;
   }
 
   .footer-col ul li:not(:last-child) {
