@@ -14,6 +14,11 @@ function NotFound() {
       <Container>
         <img src={chocolateImg} alt="Chocolate" />
         <h1> 404 - Not found!</h1>
+        <img
+          className="not-found"
+          src="https://i.stack.imgur.com/6M513.png"
+          alt="Not Found"
+        />
 
         <ButtonLink>
           <Link to="/">Go to home page</Link>

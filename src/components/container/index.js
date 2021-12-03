@@ -18,6 +18,11 @@ export const Container = styled.div`
     flex-direction: row;
   }
 
+  .not-found {
+    max-width: 800px;
+    height: 500px;
+  }
+
   img {
     max-width: 250px;
   }
